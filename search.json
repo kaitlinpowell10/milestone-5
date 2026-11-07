@@ -2,15 +2,36 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "The Price of Brilliance",
+    "title": "The Olympics Through Data",
     "section": "",
-    "text": "A diamond’s price reflects more than its size. This project uses the built-in diamonds dataset from ggplot2 to explore how carat relates to price—and whether cut quality changes the picture."
+    "text": "Beach volleyball has been part of the Summer Olympics since 1996. This project combines athlete-level volleyball records with medal results to examine which countries have reached the podium, how those results differ between men’s and women’s events, and how the medal map has shifted over time."
   },
   {
-    "objectID": "index.html#carat-and-price",
-    "href": "index.html#carat-and-price",
-    "title": "The Price of Brilliance",
-    "section": "Carat and price",
-    "text": "Carat and price\nEach point represents one diamond. Color indicates its cut quality, and transparency makes dense regions easier to see.\n\n\nlibrary(ggplot2)\n\nggplot(diamonds, aes(x = carat, y = price, color = cut)) +\n  geom_point(alpha = 0.35, size = 1.1) +\n  scale_color_brewer(palette = \"Dark2\", name = \"Cut quality\") +\n  scale_x_continuous(breaks = seq(0, 5, by = 1)) +\n  scale_y_continuous(labels = scales::label_dollar()) +\n  labs(\n    x = \"Carat\",\n    y = \"Price (USD)\"\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    plot.title = element_text(face = \"bold\", color = \"#173b3a\"),\n    panel.grid.minor = element_blank(),\n    legend.position = \"bottom\",\n    legend.title = element_text(face = \"bold\")\n  )\n\n\n\n\n\n\n\nFigure 1: Price rises with carat, with substantial variation at every size.\n\n\n\n\n\n\n\n\n\n\n\n\nNoteWhat stands out\n\n\n\nPrice generally climbs as carat increases, but diamonds of similar weight can still have very different prices. The colored bands overlap considerably, so cut alone does not explain the price pattern. Transparency helps reveal the concentration of smaller, lower-priced stones without hiding less common larger diamonds.\n\n\n\nDataset: ggplot2’s built-in diamonds data · 53,940 observations plotted · No sampling"
+    "objectID": "index.html#research-question",
+    "href": "index.html#research-question",
+    "title": "The Olympics Through Data",
+    "section": "Research question",
+    "text": "Research question\n\nHow has Olympic beach volleyball success varied by country and gender from 1996 to 2024?\nThe analysis compares countries’ medal-winning pairs, looks at men’s and women’s podium results side by side, and follows medal-winning countries across the eight Summer Games in the period."
+  },
+  {
+    "objectID": "index.html#a-broader-look-at-volleyball-athletes",
+    "href": "index.html#a-broader-look-at-volleyball-athletes",
+    "title": "The Olympics Through Data",
+    "section": "A broader look at volleyball athletes",
+    "text": "A broader look at volleyball athletes\n\nHeight and weight across all volleyball events\nThis scatterplot uses volleyball_athletes, which includes both indoor and beach volleyball and every edition included in the package. Each point is one athlete-event record with non-missing height, weight, and sex: 4,159 actual observations. The scatterplot is context for the medal analysis below; it is not restricted to beach volleyball or to 1996–2024.\n\n\n\n\n\n\n\n\n\nFigure 1: Height and weight of all volleyball athlete-event records with complete measurements, colored by sex.\n\n\n\n\n\nThe transparent points make dense clusters visible while preserving less common measurements. Compare the overlap and spread between the two recorded sex categories; these descriptive measurements do not explain athletic performance on their own."
+  },
+  {
+    "objectID": "index.html#beach-volleyball-medal-results",
+    "href": "index.html#beach-volleyball-medal-results",
+    "title": "The Olympics Through Data",
+    "section": "Beach-volleyball medal results",
+    "text": "Beach-volleyball medal results\n\nEvent filtering and medal-count method\nFor the medal analysis, olympic_athletes is filtered to Summer volleyball records from 1996 through 2024. Before filtering, the actual event labels were inspected. The dataset uses different label formats over time:\n\n\n\n\n\nTable 1: Beach volleyball event labels observed in the requested period.\n\n\n\n\n\n\nEvent name as stored in olympic_athletes\n\n\n\n\nBeach Volleyball Beach Volleyball, Men\n\n\nBeach Volleyball Beach Volleyball, Women\n\n\nBeach Volleyball Men’s Beach Volleyball\n\n\nBeach Volleyball Women’s Beach Volleyball\n\n\n\n\n\n\n\n\n\nThe package has complete athlete-level beach-volleyball medal entries through 2016; its beach-volleyball medal values are missing for Tokyo 2020 and Paris 2024. Rather than count those missing values as zero, the six 2020 and six 2024 winning pairs were added from the Olympedia Tokyo results and Paris results.\nFor 1996–2016, the two athlete rows for each medal-winning pair were deduplicated by Games, event, sex, country code, and medal. The package records confirm two distinct athletes per medal-winning pair. The official 2020 and 2024 result tables already identify each winning pair once. The combined data contain 48 pair medals—six per Games across eight editions—and duplicate medal keys are checked during rendering.\n\n\nMedals by country\nEach bar represents the number of medal-winning pairs for a country across both men’s and women’s events. The colors distinguish gold, silver, and bronze.\n\n\n\n\n\n\n\n\n\nFigure 2: Beach-volleyball medal-winning pairs by country and medal type, 1996–2024.\n\n\n\n\n\nCounting teams rather than athlete rows keeps the podium totals aligned with the competition: a medal won by a pair contributes one country medal, not two.\nAcross both events, Brazil leads with 14 medal-winning pairs. The top country is Brazil in women’s events and Brazil in men’s events.\n\n\n\nMen’s and women’s results\nEach beach-volleyball event awards one gold, one silver, and one bronze medal at each Games. The paired bars show how those medal-winning teams are distributed among countries in men’s and women’s events.\n\n\n\n\n\n\n\n\n\nFigure 3: Medal-winning pairs by country, compared between men’s and women’s beach volleyball.\n\n\n\n\n\nSince the number of podium places is the same for each event, differences between the bars show which countries earned medals in each gender category—not a difference in the total number of medals available.\nThe leading country is Brazil in women’s events and Brazil in men’s events. The bars show how the remaining medal-winning pairs are distributed among other countries.\n\n\n\nHow the medal map changed over time\nEach tile shows a country’s total medal-winning pairs at one Olympic edition, combining men’s and women’s events. Empty spaces indicate that the country did not win a beach-volleyball medal at that Games.\n\n\n\n\n\n\n\n\n\nFigure 4: Beach-volleyball medal-winning pairs by country and Olympic year.\n\n\n\n\n\nThe timeline makes repeat podium appearances and new medal-winning countries easy to spot. A country can earn up to two pair medals in one edition—one in each event."
+  },
+  {
+    "objectID": "index.html#methodology-and-sources",
+    "href": "index.html#methodology-and-sources",
+    "title": "The Olympics Through Data",
+    "section": "Methodology and sources",
+    "text": "Methodology and sources\nThe scatterplot uses every row in volleyball_athletes with observed height, weight, and sex; it covers indoor and beach volleyball, not just the study events. The medal analysis uses the beach-volleyball events in olympic_athletes from 1996 through 2024, with official pair-level results supplementing the package’s missing beach medals for 2020 and 2024. Countries are matched by National Olympic Committee (NOC) code. No observations are simulated, and missing measurements are excluded only from the scatterplot. The package’s sex field is shown as Women/Men to match its event categories; it is the dataset’s classification, not a measure of gender identity.\nDataset citation: Ismay, C. olympicAthletes: Olympic Athlete Event Data, Athens 1896 to Milano-Cortina 2026. R package, version 0.5.10. Package repository and provenance. The historical data extend R. Griffin’s Olympic history dataset; later editions use data from Olympedia.\nSupplemental medal results: Olympedia, Tokyo 2020 beach volleyball and Paris 2024 beach volleyball.\n\nRe-render this site with quarto render. The R package must be installed first; for a fresh R installation, run remotes::install_github(“moderndive/olympicAthletes”)."
   }
 ]

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>The Price of Brilliance</title>
+<title>The Olympics Through Data</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,41 +25,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -80,7 +45,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0479a98ad20111973f6a6857901ccf1d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0c4b4d83c42062dd6dd61462101ebfdb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -121,7 +86,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Milestone 5</span>
+    <span class="navbar-title">Milestone 5 · Beach Volleyball</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -132,7 +97,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Explore</span></a>
+<span class="menu-text">Research</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -151,8 +116,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Price of Brilliance</h1>
-<p class="subtitle lead">What 53,940 diamonds reveal about carat, cut, and value</p>
+<h1 class="title">The Olympics Through Data</h1>
+<p class="subtitle lead">How has Olympic beach volleyball success varied by country and gender from 1996 to 2024?</p>
 </div>
 
 
@@ -171,115 +136,295 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <style>
 :root {
-  --project-ink: #173b3a;
-  --project-muted: #526565;
-  --project-accent: #d78a56;
+  --court-ink: #18334a;
+  --court-muted: #526779;
+  --court-blue: #287da2;
+  --court-coral: #d65b57;
+  --court-gold: #d8a43c;
+  --court-paper: #f4f7f8;
 }
 
 body {
-  color: var(--project-ink);
-}
-
-#title-block-header {
-  padding: 3rem 0 2rem;
-  border-bottom: 1px solid #dce5e1;
+  background: var(--court-paper);
+  color: var(--court-ink);
 }
 
 .quarto-title-banner {
-  background: linear-gradient(120deg, #173b3a, #28615a) !important;
+  background: linear-gradient(118deg, #17314b, #1d647c) !important;
+}
+
+#title-block-header {
+  padding: 2rem 0 1.6rem;
 }
 
 .quarto-title .subtitle {
-  color: #e2eeea;
-  max-width: 42rem;
+  max-width: 52rem;
+  color: #d9e8ef;
 }
 
-.intro {
-  max-width: 48rem;
-  margin: 2rem auto 2.5rem;
-  color: var(--project-muted);
-  font-size: 1.12rem;
+.project-intro {
+  max-width: 54rem;
+  margin: 1.5rem auto 1.8rem;
+  color: var(--court-muted);
+  font-size: 1.08rem;
   line-height: 1.8;
 }
 
-h2 {
-  color: var(--project-ink);
-  font-weight: 650;
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2.2rem;
 }
 
-.plot-wrap {
-  padding: 1rem;
+.stat-card {
+  padding: 1.1rem 1.25rem;
   background: #fff;
-  border: 1px solid #e3ebe7;
+  border: 1px solid #e1e9ed;
+  border-top: 3px solid var(--court-blue);
+  border-radius: 0.8rem;
+  box-shadow: 0 8px 24px rgb(24 51 74 / 5%);
+}
+
+.stat-card:nth-child(2) { border-top-color: var(--court-coral); }
+.stat-card:nth-child(3) { border-top-color: var(--court-gold); }
+.stat-card:nth-child(4) { border-top-color: #56876f; }
+
+.stat-value {
+  display: block;
+  color: var(--court-ink);
+  font-size: 1.65rem;
+  font-weight: 750;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--court-muted);
+  font-size: 0.9rem;
+}
+
+h2, h3 {
+  color: var(--court-ink);
+  font-weight: 700;
+}
+
+.scope-note, .research-box {
+  padding: 1.15rem 1.45rem;
+  margin: 1.2rem 0 2.2rem;
+  background: #eaf1f4;
+  border-left: 4px solid var(--court-blue);
+  border-radius: 0.6rem;
+}
+
+.research-box ul {
+  margin-bottom: 0;
+}
+
+.chart-card {
+  padding: 1.1rem 1.3rem 0.8rem;
+  margin: 1rem 0 2.2rem;
+  background: #fff;
+  border: 1px solid #e1e9ed;
   border-radius: 1rem;
-  box-shadow: 0 12px 32px rgb(23 59 58 / 8%);
+  box-shadow: 0 12px 32px rgb(24 51 74 / 6%);
 }
 
-.callout-note {
-  border-left-color: var(--project-accent) !important;
-  background: #fbf7f1;
+.chart-card p, .data-note, .citation {
+  color: var(--court-muted);
 }
 
-.project-note {
-  color: var(--project-muted);
-  font-size: 0.95rem;
+.method-card {
+  padding: 1rem 1.3rem;
+  margin: 1rem 0 2rem;
+  background: #fff;
+  border: 1px solid #e1e9ed;
+  border-radius: 0.8rem;
+}
+
+.citation {
+  padding-top: 1rem;
+  margin-top: 2.5rem;
+  border-top: 1px solid #dce5e9;
+  font-size: 0.93rem;
+}
+
+.data-note {
+  font-size: 0.92rem;
+}
+
+@media (max-width: 700px) {
+  .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .chart-card { padding: 0.7rem; }
 }
 </style>
-<p class="intro">
-A diamond’s price reflects more than its size. This project uses the built-in <code>diamonds</code> dataset from ggplot2 to explore how carat relates to price—and whether cut quality changes the picture.
+<p class="project-intro">
+Beach volleyball has been part of the Summer Olympics since 1996. This project combines athlete-level volleyball records with medal results to examine which countries have reached the podium, how those results differ between men’s and women’s events, and how the medal map has shifted over time.
 </p>
-<section id="carat-and-price" class="level2">
-<h2 class="anchored" data-anchor-id="carat-and-price">Carat and price</h2>
-<p>Each point represents one diamond. Color indicates its cut quality, and transparency makes dense regions easier to see.</p>
-<div class="plot-wrap">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">color =</span> cut)) <span class="sc">+</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">size =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>, <span class="at">name =</span> <span class="st">"Cut quality"</span>) <span class="sc">+</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">by =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_dollar</span>()) <span class="sc">+</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Carat"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Price (USD)"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">color =</span> <span class="st">"#173b3a"</span>),</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div id="fig-carat-price" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Scatterplot of price against carat for all 53,940 diamonds. Points are colored by cut quality and transparent where they overlap.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-carat-price-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-carat-price-1.png" class="img-fluid figure-img" style="width:100.0%" alt="Scatterplot of price against carat for all 53,940 diamonds. Points are colored by cut quality and transparent where they overlap.">
+<div class="stats-grid">
+<div class="stat-card">
+<p><span class="stat-value">4,792</span> <span class="stat-label">all-volleyball athlete-event records</span></p>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-carat-price-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Price rises with carat, with substantial variation at every size.
+<div class="stat-card">
+<p><span class="stat-value">4,159</span> <span class="stat-label">complete height-and-weight records plotted</span></p>
+</div>
+<div class="stat-card">
+<p><span class="stat-value">756</span> <span class="stat-label">beach-volleyball athlete-event records, 1996–2024</span></p>
+</div>
+<div class="stat-card">
+<p><span class="stat-value">48</span> <span class="stat-label">verified medal-winning pairs</span></p>
+</div>
+</div>
+<section id="research-question" class="level2">
+<h2 class="anchored" data-anchor-id="research-question">Research question</h2>
+<div class="research-box">
+<p><strong>How has Olympic beach volleyball success varied by country and gender from 1996 to 2024?</strong></p>
+<p>The analysis compares countries’ medal-winning pairs, looks at men’s and women’s podium results side by side, and follows medal-winning countries across the eight Summer Games in the period.</p>
+</div>
+</section>
+<section id="a-broader-look-at-volleyball-athletes" class="level2">
+<h2 class="anchored" data-anchor-id="a-broader-look-at-volleyball-athletes">A broader look at volleyball athletes</h2>
+<section id="height-and-weight-across-all-volleyball-events" class="level3">
+<h3 class="anchored" data-anchor-id="height-and-weight-across-all-volleyball-events">Height and weight across all volleyball events</h3>
+<p>This scatterplot uses <code>volleyball_athletes</code>, which includes both indoor and beach volleyball and every edition included in the package. Each point is one athlete-event record with non-missing height, weight, and sex: <strong>4,159 actual observations</strong>. The scatterplot is context for the medal analysis below; it is not restricted to beach volleyball or to 1996–2024.</p>
+<div class="chart-card">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-volleyball-height-weight" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Scatterplot of height in centimeters versus weight in kilograms for 4,159 complete volleyball athlete-event records, including indoor and beach volleyball.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-volleyball-height-weight-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-volleyball-height-weight-1.png" class="img-fluid figure-img" style="width:100.0%" alt="Scatterplot of height in centimeters versus weight in kilograms for 4,159 complete volleyball athlete-event records, including indoor and beach volleyball.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-volleyball-height-weight-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Height and weight of all volleyball athlete-event records with complete measurements, colored by sex.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>The transparent points make dense clusters visible while preserving less common measurements. Compare the overlap and spread between the two recorded sex categories; these descriptive measurements do not explain athletic performance on their own.</p>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+</section>
+</section>
+<section id="beach-volleyball-medal-results" class="level2">
+<h2 class="anchored" data-anchor-id="beach-volleyball-medal-results">Beach-volleyball medal results</h2>
+<section id="event-filtering-and-medal-count-method" class="level3">
+<h3 class="anchored" data-anchor-id="event-filtering-and-medal-count-method">Event filtering and medal-count method</h3>
+<p>For the medal analysis, <code>olympic_athletes</code> is filtered to Summer volleyball records from 1996 through 2024. Before filtering, the actual event labels were inspected. The dataset uses different label formats over time:</p>
+<div class="method-card">
+<div class="cell">
+<div id="tbl-beach-event-names" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-beach-event-names-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Beach volleyball event labels observed in the requested period.
+</figcaption>
+<div aria-describedby="tbl-beach-event-names-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Event name as stored in olympic_athletes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Beach Volleyball Beach Volleyball, Men</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Beach Volleyball Beach Volleyball, Women</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Beach Volleyball Men’s Beach Volleyball</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Beach Volleyball Women’s Beach Volleyball</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>What stands out
+</div>
+</figure>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Price generally climbs as carat increases, but diamonds of similar weight can still have very different prices. The colored bands overlap considerably, so cut alone does not explain the price pattern. Transparency helps reveal the concentration of smaller, lower-priced stones without hiding less common larger diamonds.</p>
+</div>
+<p>The package has complete athlete-level beach-volleyball medal entries through 2016; its beach-volleyball medal values are missing for Tokyo 2020 and Paris 2024. Rather than count those missing values as zero, the six 2020 and six 2024 winning pairs were added from the <a href="https://www.olympedia.org/editions/61/sports/VBV">Olympedia Tokyo results</a> and <a href="https://www.olympedia.org/editions/63/sports/VBV">Paris results</a>.</p>
+<p>For 1996–2016, the two athlete rows for each medal-winning pair were deduplicated by Games, event, sex, country code, and medal. The package records confirm two distinct athletes per medal-winning pair. The official 2020 and 2024 result tables already identify each winning pair once. The combined data contain <strong>48 pair medals</strong>—six per Games across eight editions—and duplicate medal keys are checked during rendering.</p>
+</section>
+<section id="medals-by-country" class="level3">
+<h3 class="anchored" data-anchor-id="medals-by-country">Medals by country</h3>
+<p>Each bar represents the number of medal-winning pairs for a country across both men’s and women’s events. The colors distinguish gold, silver, and bronze.</p>
+<div class="chart-card">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-country-medals" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Horizontal stacked bar chart of beach-volleyball gold, silver, and bronze medal-winning pairs by country from 1996 through 2024. Each medal-winning pair is counted once.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-country-medals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-country-medals-1.png" class="img-fluid figure-img" style="width:100.0%" alt="Horizontal stacked bar chart of beach-volleyball gold, silver, and bronze medal-winning pairs by country from 1996 through 2024. Each medal-winning pair is counted once.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-country-medals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Beach-volleyball medal-winning pairs by country and medal type, 1996–2024.
+</figcaption>
+</figure>
 </div>
 </div>
-<p class="project-note">
-Dataset: ggplot2’s built-in <code>diamonds</code> data · 53,940 observations plotted · No sampling
+</div>
+<p>Counting teams rather than athlete rows keeps the podium totals aligned with the competition: a medal won by a pair contributes one country medal, not two.</p>
+<p>Across both events, <strong>Brazil</strong> leads with <strong>14</strong> medal-winning pairs. The top country is <strong>Brazil</strong> in women’s events and <strong>Brazil</strong> in men’s events.</p>
+</div>
+</section>
+<section id="mens-and-womens-results" class="level3">
+<h3 class="anchored" data-anchor-id="mens-and-womens-results">Men’s and women’s results</h3>
+<p>Each beach-volleyball event awards one gold, one silver, and one bronze medal at each Games. The paired bars show how those medal-winning teams are distributed among countries in men’s and women’s events.</p>
+<div class="chart-card">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-gender-medals" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Grouped horizontal bar chart comparing each country's number of beach-volleyball medal-winning pairs in men's and women's events, 1996–2024.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gender-medals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-gender-medals-1.png" class="img-fluid figure-img" style="width:100.0%" alt="Grouped horizontal bar chart comparing each country's number of beach-volleyball medal-winning pairs in men's and women's events, 1996–2024.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gender-medals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Medal-winning pairs by country, compared between men’s and women’s beach volleyball.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Since the number of podium places is the same for each event, differences between the bars show which countries earned medals in each gender category—not a difference in the total number of medals available.</p>
+<p>The leading country is <strong>Brazil</strong> in women’s events and <strong>Brazil</strong> in men’s events. The bars show how the remaining medal-winning pairs are distributed among other countries.</p>
+</div>
+</section>
+<section id="how-the-medal-map-changed-over-time" class="level3">
+<h3 class="anchored" data-anchor-id="how-the-medal-map-changed-over-time">How the medal map changed over time</h3>
+<p>Each tile shows a country’s total medal-winning pairs at one Olympic edition, combining men’s and women’s events. Empty spaces indicate that the country did not win a beach-volleyball medal at that Games.</p>
+<div class="chart-card">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-medal-timeline" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Heatmap with countries as rows and Olympic years from 1996 to 2024 as columns. Tile color and labels show each country's count of medal-winning pairs at that Games.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-medal-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-medal-timeline-1.png" class="img-fluid figure-img" style="width:100.0%" alt="Heatmap with countries as rows and Olympic years from 1996 to 2024 as columns. Tile color and labels show each country's count of medal-winning pairs at that Games.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-medal-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Beach-volleyball medal-winning pairs by country and Olympic year.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The timeline makes repeat podium appearances and new medal-winning countries easy to spot. A country can earn up to two pair medals in one edition—one in each event.</p>
+</div>
+</section>
+</section>
+<section id="methodology-and-sources" class="level2">
+<h2 class="anchored" data-anchor-id="methodology-and-sources">Methodology and sources</h2>
+<p>The scatterplot uses every row in <code>volleyball_athletes</code> with observed height, weight, and sex; it covers indoor and beach volleyball, not just the study events. The medal analysis uses the beach-volleyball events in <code>olympic_athletes</code> from 1996 through 2024, with official pair-level results supplementing the package’s missing beach medals for 2020 and 2024. Countries are matched by National Olympic Committee (NOC) code. No observations are simulated, and missing measurements are excluded only from the scatterplot. The package’s <code>sex</code> field is shown as Women/Men to match its event categories; it is the dataset’s classification, not a measure of gender identity.</p>
+<p><strong>Dataset citation:</strong> Ismay, C. <em>olympicAthletes: Olympic Athlete Event Data, Athens 1896 to Milano-Cortina 2026</em>. R package, version 0.5.10. <a href="https://github.com/moderndive/olympicAthletes">Package repository and provenance</a>. The historical data extend R. Griffin’s <a href="https://github.com/rgriff23/Olympic_history">Olympic history dataset</a>; later editions use data from <a href="https://www.olympedia.org/">Olympedia</a>.</p>
+<p><strong>Supplemental medal results:</strong> Olympedia, <a href="https://www.olympedia.org/editions/61/sports/VBV">Tokyo 2020 beach volleyball</a> and <a href="https://www.olympedia.org/editions/63/sports/VBV">Paris 2024 beach volleyball</a>.</p>
+<p class="data-note">
+Re-render this site with <code>quarto render</code>. The R package must be installed first; for a fresh R installation, run <code>remotes::install_github(“moderndive/olympicAthletes”)</code>.
 </p>
 
 
@@ -359,7 +504,7 @@ Dataset: ggplot2’s built-in <code>diamonds</code> data · 53,940 observations 
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/kaitlinpowell10\.github\.io\/milestone-5\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -693,7 +838,7 @@ Dataset: ggplot2’s built-in <code>diamonds</code> data · 53,940 observations 
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>Milestone 5 · Data Science</p>
+<p>The Olympics Through Data · Beach volleyball, 1996–2024</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
