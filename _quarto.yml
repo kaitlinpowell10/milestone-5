@@ -1,0 +1,22 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "The Price of Brilliance"
+  description: "An exploration of diamond carat and price using the ggplot2 diamonds dataset."
+  navbar:
+    background: "#173b3a"
+    foreground: "#ffffff"
+    title: "Milestone 5"
+    left:
+      - text: "Explore"
+        href: index.qmd
+  page-footer:
+    center: "Milestone 5 · Data Science"
+
+format:
+  html:
+    theme: cosmo
+    toc: false
+    smooth-scroll: true

@@ -1,0 +1,117 @@
+---
+title: "The Price of Brilliance"
+subtitle: "What 53,940 diamonds reveal about carat, cut, and value"
+---
+
+<style>
+:root {
+  --project-ink: #173b3a;
+  --project-muted: #526565;
+  --project-accent: #d78a56;
+}
+
+body {
+  color: var(--project-ink);
+}
+
+#title-block-header {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid #dce5e1;
+}
+
+.quarto-title-banner {
+  background: linear-gradient(120deg, #173b3a, #28615a) !important;
+}
+
+.quarto-title .subtitle {
+  color: #e2eeea;
+  max-width: 42rem;
+}
+
+.intro {
+  max-width: 48rem;
+  margin: 2rem auto 2.5rem;
+  color: var(--project-muted);
+  font-size: 1.12rem;
+  line-height: 1.8;
+}
+
+h2 {
+  color: var(--project-ink);
+  font-weight: 650;
+}
+
+.plot-wrap {
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #e3ebe7;
+  border-radius: 1rem;
+  box-shadow: 0 12px 32px rgb(23 59 58 / 8%);
+}
+
+.callout-note {
+  border-left-color: var(--project-accent) !important;
+  background: #fbf7f1;
+}
+
+.project-note {
+  color: var(--project-muted);
+  font-size: 0.95rem;
+}
+</style>
+
+<p class="intro">
+  A diamond's price reflects more than its size. This project uses the
+  built-in <code>diamonds</code> dataset from ggplot2 to explore how carat
+  relates to price—and whether cut quality changes the picture.
+</p>
+
+## Carat and price
+
+Each point represents one diamond. Color indicates its cut quality, and
+transparency makes dense regions easier to see.
+
+::: {.plot-wrap}
+```{r}
+#| label: fig-carat-price
+#| fig-cap: "Price rises with carat, with substantial variation at every size."
+#| fig-alt: "Scatterplot of price against carat for all 53,940 diamonds. Points are colored by cut quality and transparent where they overlap."
+#| fig-width: 10
+#| fig-height: 6
+#| out-width: "100%"
+
+library(ggplot2)
+
+ggplot(diamonds, aes(x = carat, y = price, color = cut)) +
+  geom_point(alpha = 0.35, size = 1.1) +
+  scale_color_brewer(palette = "Dark2", name = "Cut quality") +
+  scale_x_continuous(breaks = seq(0, 5, by = 1)) +
+  scale_y_continuous(labels = scales::label_dollar()) +
+  labs(
+    x = "Carat",
+    y = "Price (USD)"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold", color = "#173b3a"),
+    panel.grid.minor = element_blank(),
+    legend.position = "bottom",
+    legend.title = element_text(face = "bold")
+  )
+```
+:::
+
+::: {.callout-note}
+## What stands out
+
+Price generally climbs as carat increases, but diamonds of similar weight can
+still have very different prices. The colored bands overlap considerably, so
+cut alone does not explain the price pattern. Transparency helps reveal the
+concentration of smaller, lower-priced stones without hiding less common
+larger diamonds.
+:::
+
+<p class="project-note">
+  Dataset: ggplot2's built-in <code>diamonds</code> data ·
+  53,940 observations plotted · No sampling
+</p>
